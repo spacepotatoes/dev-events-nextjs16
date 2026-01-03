@@ -16,7 +16,7 @@ const page = () => {
 
             <ul className="events">
                {events.map(event => (
-                <li key="{event.title}">
+                <li key={event.title}>
                   <EventCard {...event} />
                 </li>
                 
