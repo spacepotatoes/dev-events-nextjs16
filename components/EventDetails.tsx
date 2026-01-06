@@ -129,10 +129,15 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
             <div className="flex w-full flex-col gap-4 pt-20">
                 <h2>Similar Events</h2>
                 <div className="events">
-                    {similarEvents.length > 0 && similarEvents.map((similarEvent: IEvent) => (
-                        <EventCard key={similarEvent.title} {...similarEvent} />
-                    ))}
-                </div>
+    {similarEvents.length > 0 && similarEvents.map((similarEvent: IEvent) => {
+        // Konvertiere das Objekt in ein einfaches Format (Plain Object)
+        const serializedEvent = JSON.parse(JSON.stringify(similarEvent));
+        
+        return (
+            <EventCard key={serializedEvent._id} {...serializedEvent} />
+        );
+    })}
+</div>
             </div>
         </section>
     )
